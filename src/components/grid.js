@@ -77,7 +77,7 @@ const GridComponent  = ({ house, onHouseDelete }) => {
               <div className="author-thumb waves-effect waves-light">
                 <a href="#"><img src={houseSigil} alt=""/></a>
               </div>
-              <span className="post-comments-number" onClick={deleteHouse} style={{ cursor: 'pointer' }}>
+              <span title="Not Allowed" className="post-comments-number" onClick={deleteHouse} style={{ cursor: 'pointer' }}>
                 <i className="fa fa-trash"></i>
               </span>
             </div>
