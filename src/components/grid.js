@@ -8,8 +8,10 @@ import { graphql } from 'react-apollo';
 class Grid extends Component {
 
   onHouseDelete(id) {
-      this.props.mutate({ variables: { id } })
-      .then(() => this.props.data.refetch())
+      if (false) {
+        this.props.mutate({ variables: { id } })
+        .then(() => this.props.data.refetch())
+      }
   }
 
   render() {
@@ -22,7 +24,7 @@ class Grid extends Component {
                   <a className="waves-effect waves-light btn red">
                       <i className="fa fa-spinner left"></i> Loading
                   </a>
-                </div> : houses.map(house => <GridComponent  key={house.id} onHouseDelete={this.onHouseDelete} house={house} />)}
+                </div> : houses.map(house => <GridComponent  key={house.id} onHouseDelete={this.onHouseDelete.bind(this)} house={house} />)}
               </div>
               {loading ? null : <div className="load-more-button text-center">
                 {/*<a className="waves-effect waves-light btn btn-large pink"> <i className="fa fa-spinner left"></i> View More</a>*/}
@@ -75,7 +77,7 @@ const GridComponent  = ({ house, onHouseDelete }) => {
               <div className="author-thumb waves-effect waves-light">
                 <a href="#"><img src={houseSigil} alt=""/></a>
               </div>
-              <span className="post-comments-number" onClick={deleteHouse}>
+              <span className="post-comments-number" onClick={deleteHouse} style={{ cursor: 'pointer' }}>
                 <i className="fa fa-trash"></i>
               </span>
             </div>

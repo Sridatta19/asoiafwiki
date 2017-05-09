@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import fetchCharacters from '../queries/fetchCharacters'
 
 class CharacterCreate extends Component {
 
@@ -20,7 +21,8 @@ class CharacterCreate extends Component {
         name: this.state.name,
         quote: this.state.quote,
         id: this.props.houseId
-      }
+      },
+      refetchQueries: [{ query: fetchCharacters }]
     }).then(() => this.setState({ name: '', quote: '' }))
   }
 

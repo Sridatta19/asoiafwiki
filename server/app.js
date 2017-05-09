@@ -11,9 +11,11 @@ app.use('/graphql', expressGraphQL({
   graphiql: true
 }));
 
+process.env.NODE_ENV = 'production';
+
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
-const webpackConfig = require('../config/webpack.config.dev.js');
+const webpackConfig = require('../config/webpack.config.prod.js');
 app.use(webpackMiddleware(webpack(webpackConfig)));
 
 module.exports = app;
